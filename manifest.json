@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Yiddish24 Downloader",
+  "version": "8.0",
+  "description": "Adds download buttons to Yiddish24 audio tracks",
+  "permissions": [
+    "downloads",
+    "offscreen",
+    "storage",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "action": {
+    "default_title": "Yiddish24 Downloader settings",
+    "default_popup": "options.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://www.yiddish24.com/*",
+    "https://cloudfront.yiddish24.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.yiddish24.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

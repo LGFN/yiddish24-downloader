@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Yiddish24 Downloader</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font: 14px system-ui, sans-serif; margin: 16px; width: 320px; }
+    h1 { font-size: 15px; margin: 0 0 12px; }
+    label { display: flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; }
+    p { margin: 6px 0 0 26px; opacity: 0.75; line-height: 1.4; }
+    .note { margin-top: 4px; font-size: 13px; opacity: 0.65; }
+    .min-group { margin-top: 12px; }
+    .min { margin: 0 0 0 26px; font-weight: 400; display: block; }
+    .min input { width: 4em; }
+    .min-group p { margin-top: 6px; }
+    .min-group.off { opacity: 0.4; } /* the whole option, text included, while compatibility mode is off */
+  </style>
+</head>
+<body>
+  <h1>Yiddish24 Downloader</h1>
+  <label><input type="checkbox" id="compat"> Compatibility mode</label>
+  <p>Re-encodes to constant bitrate (44.1 kHz) for car stereos and older players that skip or seek incorrectly.</p>
+  <p class="note">Converting may take a bit longer than a normal download.</p>
+  <div class="min-group" id="minGroup">
+    <label class="min">Only for audio longer than
+      <input type="number" id="minMinutes" min="0" step="1"> minutes</label>
+    <p>Shorter episodes are saved as is. Enter 0 to convert everything.</p>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* styles.css - Download button sits beside the site's own card buttons (share, queue) */
+
+a.yiddish24-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Category pages: the share button sits alone with no gap set on its container */
+.share-info-btn a.yiddish24-download-btn {
+  margin-inline-start: 8px;
+}
+
+/* Video cards: stacked under the date */
+.news-action a.yiddish24-download-btn {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* Video page: matches the share button in the bar under the player */
+.share-meta-btn a.yiddish24-download-btn {
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  color: rgb(82, 88, 102);
+}
+
+/* The site fades card buttons in on hover; keep ours showing while a download runs */
+a.yiddish24-download-btn.yiddish24-busy {
+  opacity: 1 !important;
+}
+
+/* Progress ring around the icon while downloading */
+a.yiddish24-download-btn.yiddish24-busy i::after {
+  content: '';
+  position: absolute;
+  inset: -5px; /* sits just outside the icon so it never blends into it */
+  border-radius: 50%;
+  /* The unfilled track must stay visible: at low contrast only the filled arc shows, which
+     reads as a crescent sitting off to one side rather than a ring around the icon */
+  background: conic-gradient(currentColor var(--y24-progress, 25%), color-mix(in srgb, currentColor 40%, transparent) 0);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  pointer-events: none;
+}
+
+a.yiddish24-download-btn.yiddish24-indeterminate i::after {
+  animation: yiddish24-spin 1s linear infinite;
+}
+
+@keyframes yiddish24-spin {
+  to { transform: rotate(360deg); }
+}
+
+a.yiddish24-download-btn i {
+  position: relative;
+  pointer-events: none;
+}
+
+/* Quiet inline status ("Converting 42%") beside the buttons while compatibility mode re-encodes */
+.yiddish24-status {
+  direction: ltr; /* the page is RTL, which would push the trailing "…" to the wrong side */
+  unicode-bidi: isolate;
+  margin-right: 10px; /* physical: the download button is to its right on this RTL page, and direction: ltr flips logical margins */
+  font: 400 12px/1 system-ui, sans-serif;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums; /* digits don't jiggle as the percent changes */
+  color: #777;
+  white-space: nowrap;
+  vertical-align: middle;
+  pointer-events: none;
+}
+.yiddish24-status[hidden] { display: none; }
+
+/* "Download unconverted" link-style button inside the status label. The doubled class
+   outranks the site's own button rules (the video page sizes every button in its share
+   bar as a 24px icon), and the site forces text-decoration off with !important. */
+.yiddish24-status > button.yiddish24-skip.yiddish24-skip {
+  all: unset;
+  margin-inline-start: 8px;
+  color: #777;
+  text-decoration: underline !important;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.yiddish24-status > button.yiddish24-skip.yiddish24-skip:hover { color: #333; }
+
+/* Live progress tooltip shown while hovering the download button during a download/conversion */
+.yiddish24-tip {
+  display: none;
+  position: fixed;
+  z-index: 2147483647;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #333;
+  color: #fff;
+  font: 400 12px/1.3 system-ui, sans-serif;
+  white-space: nowrap;
+  pointer-events: none;
+  direction: ltr;
+}
+.yiddish24-status > button.yiddish24-skip.yiddish24-skip[hidden] { display: none; } /* `all: unset` above would otherwise override [hidden] */
