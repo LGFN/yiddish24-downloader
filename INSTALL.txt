@@ -1,0 +1,59 @@
+YIDDISH24 DOWNLOADER - HOW TO INSTALL
+=====================================
+
+This adds a download button to every audio track on yiddish24.com.
+It works in Google Chrome (and other Chrome-based browsers like Edge or Brave).
+
+
+INSTALL (takes about a minute)
+------------------------------
+
+1. Unzip the file you received. You'll get a folder called "yiddish24-downloader".
+
+2. Move that folder somewhere permanent, for example your Documents folder.
+   Chrome loads the extension from this folder every time it starts,
+   so don't delete or move it after installing.
+
+3. Open Chrome and type this into the address bar, then press Enter:
+
+       chrome://extensions
+
+4. Turn on "Developer mode" (the switch in the top-right corner).
+
+5. Click "Load unpacked" (top-left) and select the "yiddish24-downloader" folder.
+   (Select the folder itself, the one that has manifest.json inside it.)
+
+6. Done. Go to https://www.yiddish24.com and refresh the page.
+
+
+HOW TO USE
+----------
+
+- Look for the small download icon (a circle with a down arrow) next to each
+  track's share button. On the homepage, the buttons appear when you hover
+  over a card.
+- Click it to download. A ring around the icon shows the progress.
+- Click it again while it's downloading to cancel.
+- The icon turns green when the file is saved to your Downloads folder.
+
+
+CAR STEREO / OLD MP3 PLAYER?
+----------------------------
+
+Some car stereos skip or show the wrong time on these files. Click the
+extension's icon in Chrome's toolbar (the puzzle piece, then
+"Yiddish24 Downloader") and turn on "Compatibility mode". Downloads will then
+be converted into a format that older players handle well. This takes a
+little longer.
+
+
+GOOD TO KNOW
+------------
+
+- Chrome may sometimes show a message about "developer mode extensions".
+  That's normal for extensions installed this way; just close it
+  (don't click "Disable").
+- To update to a newer version: replace the folder's contents with the new
+  files, then click the circular reload arrow on the extension's card
+  in chrome://extensions.
+- To remove it: go to chrome://extensions and click "Remove".
